@@ -1,14 +1,27 @@
 
+#-----------------------------------------------------------------------------
+# This example will  of socket that uses TLS verification that
+#  encodes the message in first bytes of the message
+
+#-----------------------------------------------------------------------------
+
+
+
 import ssl
 from ssl import *
 from pprint import  pprint
 import socket
 
+
+#define where to send port for ssl encryption
 TARGET_HOST ='ww.google.com'
 SSL_PORT=443
+
+#define certification file
 CA_CERT_PATH = 'cacert.pem'
 
 
+#select certification for Socket ,and verify the context
 def ssl_wrap_socket(sock, keyfile=None, certfile=None, cert_reqs=None, ca_certs=None, server_hostname=None,
                     ssl_version=None):
     context=SSLContext(ssl_version)
@@ -26,7 +39,7 @@ def ssl_wrap_socket(sock, keyfile=None, certfile=None, cert_reqs=None, ca_certs=
     if HAS_SNI:
         return  context.wrap_socket(sock)
 
-
+#create socket
 hostname = TARGET_HOST
 client_sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 client_sock.connect((hostname, 443))
@@ -34,10 +47,12 @@ ssl_socket = ssl_wrap_socket(client_sock, ssl_version=PROTOCOL_TLSv1, cert_reqs=
                              ca_certs=CA_CERT_PATH, server_hostname=hostname)
 print("Extracting remote host certificate details:")
 
+
 cert = ssl_socket.getpeercert()
-#pprint(cert)
+
+
+#write get to certified socket
 if not cert or ('commonName', TARGET_HOST) not in      cert['subject'][4]:
-   # raise Exception("Invalid SSL cert for host %s. Check if          this is a man-in-the-middle attack!" )
     ssl_socket.write('GET / \n'.encode('utf-8'))
     pprint(ssl_socket .recv(1024).split(b"\r\n"))
     ssl_socket.close()
