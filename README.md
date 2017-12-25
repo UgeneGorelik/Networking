@@ -1,6 +1,3 @@
-Api_Twitter:
-----------------------------------------
-Example how to use Twitter Api -monitor who mentioned Me and reply to his comments
 
 
 WeatherApi:
