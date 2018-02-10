@@ -1,15 +1,16 @@
 
-tcpClient.py/tcpServer.py
-
-basic TCP protocol server and client
-
-
-udpClient.py/udpServer.py
-basic TCP protocol server and client
 
 echo_client/echo_server:
 ----------------------------------------
 Server + Client that user can send messages to each other
+
+tcpClient.py/tcpServer.py:
+----------------------------------------
+Server + Client that user can send messages to each other
+
+udpClient.py/udpServer.py:
+----------------------------------------
+basic TCP protocol server and client
 
 
 EncodeSizeServer/EncodeSizeCLient:
