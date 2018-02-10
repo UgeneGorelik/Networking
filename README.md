@@ -1,9 +1,10 @@
 
+tcpClient.py/tcpServer.py
+basic TCP protocol server and client
 
-WeatherApi:
-----------------------------------------
-Example how to use Open Weather Api to see current weather
 
+udpClient.py/udpServer.py
+basic TCP protocol server and client
 
 echo_client/echo_server:
 ----------------------------------------
